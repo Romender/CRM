@@ -2,6 +2,7 @@ package com.fabits.crm.domain;
 
 import com.fabits.crm.annotation.CsvField;
 import com.fabits.crm.annotation.Datatype;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +10,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -21,7 +24,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Customer {
+public class Customer implements Persistable<String> {
 
     @CsvField(name = "DP-Id")
     @Id
@@ -86,4 +89,17 @@ public class Customer {
     @Column("per_pin")
     String permanentPinCode;
 
+    @JsonIgnore
+    @Transient
+    boolean isNew;
+
+    @Override
+    public String getId() {
+        return clientId;
+    }
+
+    @Override
+    public boolean isNew() {
+        return isNew;
+    }
 }
