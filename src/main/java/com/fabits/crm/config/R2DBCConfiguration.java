@@ -23,6 +23,7 @@ public class R2DBCConfiguration {
 
     @Bean
     ReactiveTransactionManager transactionManager(ConnectionFactory connectionFactory) {
+
         return new R2dbcTransactionManager(connectionFactory);
     }
 

@@ -29,7 +29,6 @@ public class CustomerController {
     public Mono<Customer> findById(@PathVariable String id) {
         return service.findById(id);
     }
-
     @DeleteMapping("/{id}")
     public Mono<Void> deleteCustomer(@PathVariable String id) {
         return service.deleteCustomer(id);

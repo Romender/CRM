@@ -50,6 +50,6 @@ public class MeetingInformationService {
         if (Objects.isNull(when)){
             when = LocalDate.now().atStartOfDay();
         }
-        return repository.findAllByEmplAndEmployeeIdAndMeetingTimeIsBetween(employeeId, when, when.plusDays(1));
+        return repository.findAllByEmployeeIdAndMeetingTimeIsBetween(employeeId, when, when.plusDays(1));
     }
 }

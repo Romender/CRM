@@ -12,6 +12,6 @@ public interface MeetingRepository extends ReactiveCrudRepository<MeetingInforma
 
     Flux<MeetingInformation> findAllByClientIdAndMeetingTimeAfter(String clientId, LocalDateTime when);
 
-    Flux<MeetingInformation> findAllByEmplAndEmployeeIdAndMeetingTimeIsBetween(String employeeId, LocalDateTime start, LocalDateTime end);
+    Flux<MeetingInformation> findAllByEmployeeIdAndMeetingTimeIsBetween(String employeeId, LocalDateTime start, LocalDateTime end);
 }
 

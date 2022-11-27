@@ -86,6 +86,8 @@ public class Customer implements Persistable<String> {
     String permanentCity;
     @Column("per_state")
     String permanentState;
+    @Column("per_country")
+    String permanentCountry;
     @Column("per_pin")
     String permanentPinCode;
 
@@ -101,5 +103,10 @@ public class Customer implements Persistable<String> {
     @Override
     public boolean isNew() {
         return isNew;
+    }
+
+    public void setNew(boolean isNew) {
+        System.out.println(isNew);
+        this.isNew = isNew;
     }
 }
